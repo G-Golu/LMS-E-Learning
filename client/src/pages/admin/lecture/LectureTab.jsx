@@ -25,7 +25,7 @@ const LectureTab = () => {
   const [isFree, setIsFree] = useState(false);
   const [mediaProgress, setMediaProgress] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [btnDisable, setBtnDisable] = useState(true); // this btnDisabled use line no 147
+  const [ btnDisable,setBtnDisable] = useState(true); // this btnDisabled use line no 147 remove "btnDisabled"
   const params = useParams();
   const { courseId, lectureId } = params;
 
@@ -145,7 +145,7 @@ const LectureTab = () => {
             type="file"
             accept="video/*"
             onChange={fileChangeHandler}
-            disabled={btnDisable} ////// use btnDisabled
+            //disabled={btnDisable} ////// use btnDisabled
             placeholder="Ex. Introduction to Javascript"
             className="w-fit"
           />
