@@ -145,7 +145,7 @@ const LectureTab = () => {
             type="file"
             accept="video/*"
             onChange={fileChangeHandler}
-            //disabled={btnDisable} ////// use btnDisabled
+            disabled={btnDisable} ////// use btnDisabled
             placeholder="Ex. Introduction to Javascript"
             className="w-fit"
           />
