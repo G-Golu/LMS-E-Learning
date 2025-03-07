@@ -86,10 +86,10 @@ export const courseApi = createApi({
         lectureTitle,
         videoInfo,
         isPreviewFree,
-        courseId,
         lectureId,
+        
       }) => ({
-        url: `/${courseId}/lecture/${lectureId}`,
+        url: `/lecture/${lectureId}`,
         method: "POST",
         body: { lectureTitle, videoInfo, isPreviewFree },
       }),
@@ -129,3 +129,12 @@ export const {
   useGetLectureByIdQuery,
   usePublishCourseMutation,
 } = courseApi;
+
+
+
+
+
+
+
+
+

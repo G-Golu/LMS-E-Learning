@@ -65,6 +65,7 @@ const LectureTab = () => {
           });
           setBtnDisable(false);
           toast.success(res.data.message);
+          
         }
       } catch (error) {
         console.log(error);
@@ -122,7 +123,7 @@ const LectureTab = () => {
               <Loader2 className="w-4 h-4 mr-2 animate-spin"/>
               Please wait
               </> : "Remove Lecture"
-            }
+            } 
           </Button>
         </div>
       </CardHeader>
