@@ -2,7 +2,7 @@ import Course from "./Course";
 
 function MyLearning() {
   const isLoading = false;
-  const MyLearningCourses = [1, 2];
+  const MyLearningCourses = [];
   return (
     <div className="max-w-4xl px-4 mx-auto my-24 md:px-0">
       <h1 className="text-2xl font-bold">My LEARNING</h1>
@@ -16,7 +16,7 @@ function MyLearning() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {
             [1, 2].map((course, index) =>
-              <Course key={index} />)
+              <Course key={index} course={course} />)
             }
           </div>
         )

@@ -48,9 +48,11 @@ const Navbar = () => {
       <div className="items-center justify-between hidden h-full gap-10 mx-auto max-w-7xl md:flex">
         <div className="flex items-center gap-2">
           <GraduationCap size={"30"} />
+         <Link to="/">
           <h1 className="hidden text-2xl font-extrabold md:block">
             LMS_Learning
           </h1>
+          </Link>
         </div>
         {/* User icons and dark mode icons */}
         <div className="flex items-center gap-8">

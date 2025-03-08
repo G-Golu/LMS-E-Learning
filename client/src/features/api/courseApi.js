@@ -18,6 +18,12 @@ export const courseApi = createApi({
       }),
       invalidatesTags: ["Refetch_Creator_Course"],
     }),
+    getPublishedCourse: builder.query({
+      query: () => ({
+        url: "/published-courses",
+        method: "GET",
+      }),
+    }),
     getSearchCourse:builder.query({
       query: ({searchQuery, categories, sortByPrice}) => {
         // Build qiery string
@@ -40,12 +46,12 @@ export const courseApi = createApi({
         }
       }
     }),
-    getPublishedCourse: builder.query({
-      query: () => ({
-        url: "/published-courses",
-        method: "GET",
-      }),
-    }),
+    // getPublishedCourse: builder.query({
+    //   query: () => ({
+    //     url: "/published-courses",
+    //     method: "GET",
+    //   }),
+    // }),
     getCreatorCourse: builder.query({
       query: () => ({
         url: "",
