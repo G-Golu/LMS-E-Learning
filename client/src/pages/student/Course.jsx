@@ -3,15 +3,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import PropTypes from "prop-types";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Course = ({ course }) => {
   if (!course) {
     return <p className="text-red-500">Course data is not available</p>; // ✅ Prevents crash
   }
 
-  // const Course = ({ course }) => {
-  return (
+  <Link to={`/course-detail/${course._id}`}>
+   
+  
    
       <Card className="overflow-hidden transition-all duration-300 transform bg-white rounded-lg shadow-lg dark:bg-gray-800 hover:shadow-2xl hover:scale-105">
         <div className="relative">
@@ -47,9 +49,10 @@ const Course = ({ course }) => {
           </div>
         </CardContent>
       </Card>
-    
-  );
+    </Link>
+  
 };
+
 
 // ✅ Add PropTypes Validation
 Course.propTypes = {
