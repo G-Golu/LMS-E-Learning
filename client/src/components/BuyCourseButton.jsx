@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useCreateCheckoutSessionMutation } from "@/features/api/purchaseApi";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";

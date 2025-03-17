@@ -5,7 +5,7 @@ import "./App.css";
 import HeroSection from "./pages/student/HeroSection";
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
-//import { Router } from "express";
+// import { Router } from "express";
 import { RouterProvider } from "react-router";
 import Courses from "./pages/student/Courses";
 import MyLearning from "./pages/student/Mylearning";
@@ -17,8 +17,8 @@ import AddCourse from "./pages/admin/course/AddCourse";
 import EditCourse from "./pages/admin/course/EditCourse";
 import CreateLecture from "./pages/admin/lecture/CreateLecture";
 import EditLecture from "./pages/admin/lecture/EditLecture";
-import CourseDetail from "./pages/student/CourseDetail";
-import CourseProgress from "./pages/student/CourseProgress";
+// import CourseDetail from "./pages/student/CourseDetail";
+//import CourseProgress from "./pages/student/CourseProgress";
 
 
 const appRouter = createBrowserRouter([
@@ -48,14 +48,14 @@ const appRouter = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
-      {
-        path: "course-detail/:courseId",
-        element: <CourseDetail />,
-      },
-      {
-        path: "course-progress/:courseId",
-        element: <CourseProgress />,
-      },
+      // {
+      //   path: "course-detail/:courseId",
+      //   element: <CourseDetail />,
+      // },
+      // {
+      //   path: "course-progress/:courseId",
+      //   element: <CourseProgress />,
+      // },
 
 
       // admin routes start from here
