@@ -1,6 +1,9 @@
 import { loadScript } from "@paypal/paypal-js";
 import Course from "../models/course.model.js";
-import { CoursePurchase } from "../models/coursePurchases.model";
+import { CoursePurchase } from "../models/coursePurchases.model.js";
+import Lecture from "../models/lecture.model.js";
+import User from "../models/user.model.js";
+
 
 const loadScript = new loadScript(process.env.PAYPAL_SECRET_KEY);
 
@@ -132,4 +135,44 @@ export const loaderWebhook = async (req, res) => {
     }
 
     res.status(200).send();
+};
+
+export const getCourseDetailWithPurchaseStatus = async (request,res) => {
+try {
+    
+    const { courseId } = request.params;
+    const userId = request.id;
+
+const course = await Course.findById(courseId).populate({path: "creator"}).populate({path:"Lectures"});
+
+const purchased = await CoursePurchase.findOne({userId, courseId});
+
+if (!course){
+    return res.status(404).json({message: "Course not found!"});
+}
+ 
+return res.status(200).JSON({
+    course,
+    purchased: !!purchased , // true if purchase , false otherwise
+});
+
+} catch (error) {
+    console.log(error);
+}
+};
+
+export const getAllPurchasedCourse = async (_, res) => {
+    try {
+        const purchasedCourse = await CoursePurchase.find({status: "completed"}).populate("courseId");
+        if(!purchasedCourse){
+            return res.status(404).json({
+                purchasedCourse:[]
+            });
+        }
+        return res.status(200).json({
+            purchasedCourse
+        });
+    } catch (error) {
+        console.log(error);
+    }
 };
