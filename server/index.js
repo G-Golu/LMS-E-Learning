@@ -1,4 +1,4 @@
-import express  from "express";
+import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -16,7 +16,7 @@ connectDB();
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 // default middleware
 app.use(express.json());
 app.use(cookieParser());
