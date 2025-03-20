@@ -45,13 +45,14 @@ export const courseApi = createApi({
           method:"GET", 
         }
       }
+    }), 
+    /// 50 no line code dout
+    useGetPublishedCourseQuery: builder.query({
+      query: () => ({
+        url: "/published-courses",
+        method: "GET",
+      }),
     }),
-    // getPublishedCourse: builder.query({
-    //   query: () => ({
-    //     url: "/published-courses",
-    //     method: "GET",
-    //   }),
-    // }),
     getCreatorCourse: builder.query({
       query: () => ({
         url: "",
@@ -134,10 +135,8 @@ export const {
   useRemoveLectureMutation,
   useGetLectureByIdQuery,
   usePublishCourseMutation,
+
 } = courseApi;
-
-
-
 
 
 

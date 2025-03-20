@@ -90,3 +90,10 @@ const CourseTable = () => {
 }
 
 export default CourseTable;
+
+
+
+
+
+
+
