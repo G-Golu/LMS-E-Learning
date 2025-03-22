@@ -392,6 +392,7 @@ const CourseTab = () => {
     if (error) {
       toast.error(error.data.message || "Failed to update course");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess, error]);
 
   if(courseByIdLoading) return <h1>Loading...</h1>
@@ -402,7 +403,7 @@ const CourseTab = () => {
         <div>
           <CardTitle>Basic Course Information</CardTitle>
           <CardDescription>
-            Make changes to your courses here. Click save when you're done.
+            Make changes to your courses here. Click save when you`re done.
           </CardDescription>
         </div>
         <div className="space-x-2">
@@ -540,3 +541,6 @@ const CourseTab = () => {
 };
 
 export default CourseTab;
+
+
+// using chatgpt

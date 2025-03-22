@@ -39,6 +39,7 @@ const CourseProgress = () => {
       refetch();
       toast.success(markInCompleteData.message);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completedSuccess, inCompletedSuccess]);
 
   const [currentLecture, setCurrentLecture] = useState(null);
