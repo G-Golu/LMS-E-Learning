@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Course from "./Course";
 import {
   useLoadUserQuery,
@@ -119,7 +119,7 @@ const Profile = () => {
               <DialogHeader>
                 <DialogTitle>Edit Profile</DialogTitle>
                 <DialogDescription>
-                  Make changes to your profile here. Click save when you`re
+                  Make changes to your profile here. Click save when you're
                   done.
                 </DialogDescription>
               </DialogHeader>
@@ -164,10 +164,10 @@ const Profile = () => {
         </div>
       </div>
       <div>
-        <h1 className="text-lg font-medium">Courses you`re enrolled in</h1>
+        <h1 className="text-lg font-medium">Courses you're enrolled in</h1>
         <div className="grid grid-cols-1 gap-4 my-5 sm:grid-cols-2 md:grid-cols-3">
           {user.enrolledCourses.length === 0 ? (
-            <h1>You haven`t enrolled yet</h1>
+            <h1>You haven't enrolled yet</h1>
           ) : (
             user.enrolledCourses.map((course) => (
               <Course course={course} key={course._id} />

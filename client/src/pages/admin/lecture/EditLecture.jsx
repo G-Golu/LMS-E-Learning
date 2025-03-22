@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+
 import { Link, useParams } from "react-router-dom";
 import LectureTab from "./LectureTab";
 
@@ -11,15 +12,11 @@ const EditLecture = () => {
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">
           <Link to={`/admin/course/${courseId}/lecture`}>
-            <Button
-              size="icon"
-              variant="outline"
-              className="mt-10 rounded-full"
-            >
+            <Button size="icon" variant="outline" className="rounded-full">
               <ArrowLeft size={16} />
             </Button>
           </Link>
-          <h1 className="mt-10 text-xl font-bold">Update Your Lecture</h1>
+          <h1 className="text-xl font-bold">Update Your Lecture</h1>
         </div>
       </div>
       <LectureTab />

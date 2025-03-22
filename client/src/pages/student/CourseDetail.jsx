@@ -29,10 +29,10 @@ const CourseDetail = () => {
   console.log(purchased);
 
   const handleContinueCourse = () => {
-    if (purchased) {
-      navigate(`/course-progress/${courseId}`);
+    if(purchased){
+      navigate(`/course-progress/${courseId}`)
     }
-  };
+  }
 
   return (
     <div className="space-y-5">
@@ -71,13 +71,8 @@ const CourseDetail = () => {
               {course.lectures.map((lecture, idx) => (
                 <div key={idx} className="flex items-center gap-3 text-sm">
                   <span>
-                    {lecture.isUnlocked ? (
-                      <PlayCircle size={14} />
-                    ) : (
-                      <Lock size={14} />
-                    )}
+                    {true ? <PlayCircle size={14} /> : <Lock size={14} />}
                   </span>
-
                   <p>{lecture.lectureTitle}</p>
                 </div>
               ))}
@@ -101,9 +96,7 @@ const CourseDetail = () => {
             </CardContent>
             <CardFooter className="flex justify-center p-4">
               {purchased ? (
-                <Button onClick={handleContinueCourse} className="w-full">
-                  Continue Course
-                </Button>
+                <Button onClick={handleContinueCourse} className="w-full">Continue Course</Button>
               ) : (
                 <BuyCourseButton courseId={courseId} />
               )}

@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -8,12 +10,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
 import { useCreateCourseMutation } from "@/features/api/courseApi";
+import { Loader2 } from "lucide-react";
+import  { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const AddCourse = () => {
@@ -42,12 +42,12 @@ const AddCourse = () => {
   },[isSuccess, error])
 
   return (
-    <div className="flex-1 mx-10 mt-8">
+    <div className="flex-1 mx-10">
       <div className="mb-4">
-        <h1 className="space-y-2 text-xl font-bold">
+        <h1 className="text-xl font-bold">
           Lets add course, add some basic course details for your new course
         </h1>
-        <p className="mt-4 space-y-2 text-sm">
+        <p className="text-sm">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
           laborum!
         </p>

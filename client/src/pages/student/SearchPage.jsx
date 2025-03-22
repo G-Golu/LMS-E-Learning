@@ -27,10 +27,10 @@ const SearchPage = () => {
   }
   return (
     <div className="p-4 mx-auto max-w-7xl md:p-8">
-      <div className="my-12">
-        <h1 className="text-xl font-bold md:text-2xl">Result For {query}</h1>
+      <div className="my-6">
+        <h1 className="text-xl font-bold md:text-2xl">result for "{query}"</h1>
         <p>
-          Showing results for{" "}
+          Showing results for{""}
           <span className="italic font-bold text-blue-800">{query}</span>
         </p>
       </div>

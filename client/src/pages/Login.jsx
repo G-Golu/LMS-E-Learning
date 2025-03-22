@@ -1,6 +1,5 @@
+// McgPr7oX7v1mMcbN
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-
 import {
   Card,
   CardContent,
@@ -19,14 +18,15 @@ import {
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
   const [signupInput, setSignupInput] = useState({
     name: "",
-    email: " ",
-    password: " ",
+    email: "",
+    password: "",
   });
-  const [loginInput, setLoginInput] = useState({ email: " ", password: " " });
+  const [loginInput, setLoginInput] = useState({ email: "", password: "" });
 
   const [
     registerUser,
@@ -46,7 +46,7 @@ const Login = () => {
       isSuccess: loginIsSuccess,
     },
   ] = useLoginUserMutation();
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
 
   const changeInputHandler = (e, type) => {
     const { name, value } = e.target;
@@ -56,6 +56,7 @@ const Login = () => {
       setLoginInput({ ...loginInput, [name]: value });
     }
   };
+
   const handleRegistration = async (type) => {
     const inputData = type === "signup" ? signupInput : loginInput;
     const action = type === "signup" ? registerUser : loginUser;
@@ -63,18 +64,18 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (registerIsSuccess && registerData){
-      toast.success(registerData.message || "Signup successfully")
+    if(registerIsSuccess && registerData){
+      toast.success(registerData.message || "Signup successful.")
     }
     if(registerError){
       toast.error(registerError.data.message || "Signup Failed");
     }
-    if (loginIsSuccess && loginData){
-      toast.success(loginData.message || "Login successfully");
+    if(loginIsSuccess && loginData){
+      toast.success(loginData.message || "Login successful.");
       navigate("/");
     }
-    if(loginError){
-      toast.error(loginError.data.message || "Login Failed");
+    if(loginError){ 
+      toast.error(loginError.data.message || "login Failed");
     }
   }, [
     loginIsLoading,
@@ -83,33 +84,32 @@ const Login = () => {
     registerData,
     loginError,
     registerError,
-    
   ]);
 
   return (
     <div className="flex items-center justify-center w-full mt-20">
       <Tabs defaultValue="login" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="signup">SignUp</TabsTrigger>
+          <TabsTrigger value="signup">Signup</TabsTrigger>
           <TabsTrigger value="login">Login</TabsTrigger>
         </TabsList>
         <TabsContent value="signup">
           <Card>
             <CardHeader>
-              <CardTitle>SignUp</CardTitle>
+              <CardTitle>Signup</CardTitle>
               <CardDescription>
-                Create a new account and click signup when you are done.
+                Create a new account and click signup when you're done.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
                 <Label htmlFor="name">Name</Label>
                 <Input
-                  onChange={(e) => changeInputHandler(e, "signup")}
                   type="text"
                   name="name"
                   value={signupInput.name}
-                  placeholder="Eg. Shri Radhe"
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. patel"
                   required="true"
                 />
               </div>
@@ -119,8 +119,8 @@ const Login = () => {
                   type="email"
                   name="email"
                   value={signupInput.email}
-                  placeholder="Eg.radhe@gmail.com"
                   onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. patel@gmail.com"
                   required="true"
                 />
               </div>
@@ -130,8 +130,8 @@ const Login = () => {
                   type="password"
                   name="password"
                   value={signupInput.password}
-                  placeholder="Eg.xyz"
                   onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. xyz"
                   required="true"
                 />
               </div>
@@ -144,7 +144,7 @@ const Login = () => {
                 {registerIsLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Please
-                    wait...
+                    wait
                   </>
                 ) : (
                   "Signup"
@@ -158,7 +158,7 @@ const Login = () => {
             <CardHeader>
               <CardTitle>Login</CardTitle>
               <CardDescription>
-                Login your password here. After signup, you will be logged in.
+                Login your password here. After signup, you'll be logged in.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -168,19 +168,19 @@ const Login = () => {
                   type="email"
                   name="email"
                   value={loginInput.email}
-                  placeholder="Eg. radhe@gmail.com"
                   onChange={(e) => changeInputHandler(e, "login")}
+                  placeholder="Eg. patel@gmail.com"
                   required="true"
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="new"> Password</Label>
+                <Label htmlFor="new">Password</Label>
                 <Input
                   type="password"
                   name="password"
                   value={loginInput.password}
-                  placeholder="Eg. xyz"
                   onChange={(e) => changeInputHandler(e, "login")}
+                  placeholder="Eg. xyz"
                   required="true"
                 />
               </div>
@@ -193,7 +193,7 @@ const Login = () => {
                 {loginIsLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Please
-                    wait...
+                    wait
                   </>
                 ) : (
                   "Login"
@@ -206,13 +206,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
-
-
-
-
-
-
-
-
