@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+import { Menu, School } from "lucide-react";
+import  { useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,10 +8,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { GraduationCap, Menu } from "lucide-react";
 import { Button } from "./ui/button";
-import { DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import DarkMode from "@/DarkMode";
 import {
@@ -23,9 +25,9 @@ import {
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutUserMutation } from "@/features/api/authApi";
-import { useEffect } from "react";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
+
 const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
   const [logoutUser, { data, isSuccess }] = useLogoutUserMutation();
@@ -33,28 +35,27 @@ const Navbar = () => {
   const logoutHandler = async () => {
     await logoutUser();
   };
-  // console.log(user);
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success(data.message || "User logged out successfully");
+      toast.success(data?.message || "User log out.");
       navigate("/login");
     }
   }, [isSuccess]);
 
   return (
-    <div className="h-16 dark:bg-[#0A0A0A] bg-white border-b dark:border-b-gray-800 border-b-gray-200 fixed top-0 left-0 right-0 duration-300 z-10">
+    <div className="h-16 dark:bg-[#020817] bg-white border-b dark:border-b-gray-800 border-b-gray-200 fixed top-0 left-0 right-0 duration-300 z-10">
       {/* Desktop */}
       <div className="items-center justify-between hidden h-full gap-10 mx-auto max-w-7xl md:flex">
         <div className="flex items-center gap-2">
-          <GraduationCap size={"30"} />
-         <Link to="/">
-          <h1 className="hidden text-2xl font-extrabold md:block">
-            LMS_Learning
-          </h1>
+          <School size={"30"} />
+          <Link to="/">
+            <h1 className="hidden text-2xl font-extrabold md:block">
+              E-Learning
+            </h1>
           </Link>
         </div>
-        {/* User icons and dark mode icons */}
+        {/* User icons and dark mode icon  */}
         <div className="flex items-center gap-8">
           {user ? (
             <DropdownMenu>
@@ -72,18 +73,17 @@ const Navbar = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <Link to="my-learning">My Learning</Link>
+                    <Link to="my-learning">My learning</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Link to="profile">Edit Profile</Link>
+                    {" "}
+                    <Link to="profile">Edit Profile</Link>{" "}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={logoutHandler}>
+                    Log out
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-
-                <DropdownMenuItem onClick={logoutHandler}>
-                  Log out
-                </DropdownMenuItem>
-                {user.role === "instructor" && (
+                {user?.role === "instructor" && (
                   <>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem><Link to="/admin/dashboard">Dashboard</Link></DropdownMenuItem>
@@ -102,10 +102,10 @@ const Navbar = () => {
           <DarkMode />
         </div>
       </div>
-      {/* Mobile device */}
+      {/* Mobile device  */}
       <div className="flex items-center justify-between h-full px-4 md:hidden">
-        <h1 className="text-2xl font-extrabold">LMS_Learning</h1>
-        <MobileNavbar />
+        <h1 className="text-2xl font-extrabold">E-learning</h1>
+        <MobileNavbar user={user}/>
       </div>
     </div>
   );
@@ -113,14 +113,15 @@ const Navbar = () => {
 
 export default Navbar;
 
-const MobileNavbar = () => {
-  const role = "instructor";
+const MobileNavbar = ({user}) => {
+  const navigate = useNavigate();
+  
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button
           size="icon"
-          className="bg-gray-200 rounded-full hover:bg-gray-200"
+          className="rounded-full hover:bg-gray-200"
           variant="outline"
         >
           <Menu />
@@ -128,21 +129,19 @@ const MobileNavbar = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <SheetHeader className="flex flex-row items-center justify-between mt-2">
-          <SheetTitle>LMS_Learning</SheetTitle>
+          <SheetTitle> <Link to="/">E-Learning</Link></SheetTitle>
           <DarkMode />
         </SheetHeader>
         <Separator className="mr-2" />
-        <nav className="flex-col space-y-4">
-          <span>My Learning</span>
-          <Separator className="mr-2" />
-          <span>Edit Profile</span>
-          <p>Log Out</p>
+        <nav className="flex flex-col space-y-4">
+          <Link to="/my-learning">My Learning</Link>
+          <Link to="/profile">Edit Profile</Link>
+          <p>Log out</p>
         </nav>
-
-        {role === "instructor" && (
+        {user?.role === "instructor" && (
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Dashboard</Button>
+              <Button type="submit" onClick={()=> navigate("/admin/dashboard")}>Dashboard</Button>
             </SheetClose>
           </SheetFooter>
         )}
